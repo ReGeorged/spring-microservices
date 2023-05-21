@@ -1,9 +1,10 @@
+version: '3'
 services:
   postgres:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: postgresadmin
+      POSTGRES_USER: reAdmin
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
@@ -12,7 +13,7 @@ services:
       - "5432:5432"
     networks:
       - postgres
-    restart: unless-stopped
+    restart: 'no'
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -26,7 +27,7 @@ services:
       - "5050:80"
     networks:
       - postgres
-    restart: unless-stopped
+    restart: 'no'
     depends_on:
       - postgres
   mongo:
@@ -41,7 +42,7 @@ services:
       - "27017:27017"
     networks:
       - mongo
-    restart: unless-stopped
+    restart: 'no'
 
   mongo-express:
     image: mongo-express
@@ -60,6 +61,7 @@ services:
       - mongo
     networks:
       - mongo
+    restart: 'no'
 
 
 
@@ -74,6 +76,5 @@ volumes:
   pgadmin:
   mongo:
   mongo-express:
-
 
 

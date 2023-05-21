@@ -1,11 +1,11 @@
-package org.reenterprize.fraud;
+package org.reenterprize.compliance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FraudApplication {
+public class ComplianceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FraudApplication.class,args);
+        SpringApplication.run(ComplianceApplication.class,args);
     }
 }
