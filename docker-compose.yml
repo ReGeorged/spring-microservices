@@ -3,7 +3,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: reAdmin
+      POSTGRES_USER: postgresadmin
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
@@ -27,11 +27,53 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+    depends_on:
+      - postgres
+  mongo:
+    container_name: mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo:/data/mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo
+    restart: unless-stopped
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo_express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: mongoadmin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: mongoexpressadmin
+      ME_CONFIG_BASICAUTH_PASSWORD: password
+    links:
+      - mongo
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    networks:
+      - mongo
+
+
+
 networks:
   postgres:
     driver: bridge
+  mongo:
+    driver: bridge
+
 volumes:
   postgres:
   pgadmin:
+  mongo:
+  mongo-express:
+
 
 

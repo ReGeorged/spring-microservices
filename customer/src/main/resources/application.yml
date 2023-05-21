@@ -3,7 +3,7 @@
       name: CustomerService
     datasource:
       url: jdbc:postgresql://localhost:5432/customer
-      username: 'reAdmin'
+      username: 'postgresadmin'
       password: 'password'
       jpa:
         properties:
