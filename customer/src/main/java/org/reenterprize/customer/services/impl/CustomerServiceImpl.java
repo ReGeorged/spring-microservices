@@ -1,52 +1,28 @@
 package org.reenterprize.customer.services.impl;
 
 
+import lombok.AllArgsConstructor;
 import org.reenterprize.customer.models.Customer;
+import org.reenterprize.customer.repositories.CustomerRepository;
+import org.reenterprize.customer.requests.CustomerRegistrationRequest;
 import org.reenterprize.customer.services.ICustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerServiceImpl implements ICustomerService {
-    @Override
-    public String add(Object arg) {
+@AllArgsConstructor
+public class CustomerServiceImpl   {
+    private final CustomerRepository customerRepository;
+
+    public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
-                .setFirstName("nika")
-                .setLastName("giorgadze")
-                .setAddress("misamarti")
-                .setEmail("randomeiali@emai;.com")
+                .setFirstName(request.firstName())
+                .setLastName(request.lastName())
+                .setEmail(request.email())
                 .build();
-
-        //TODO: implement checks
-        return customer.toString();
+        // todo: check if email valid
+        // todo: check if email not taken
+        customerRepository.save(customer);
     }
 
-    @Override
-    public String delete() {
-        return null;
-    }
-
-    @Override
-    public String deleteAll() {
-        return null;
-    }
-
-    @Override
-    public String getById() {
-        return null;
-    }
-
-    @Override
-    public String searchByName() {
-        return null;
-    }
-
-    @Override
-    public String getAll() {
-        return null;
-    }
-
-    @Override
-    public String update() {
-        return null;
-    }
 }

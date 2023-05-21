@@ -1,12 +1,11 @@
 package org.reenterprize.customer.requests;
 
-public record CustomerRegistrationRequest (
-     Long id,
-     String name,
-     String lastName,
-     String email,
-     String address
+public record CustomerRegistrationRequest(
+        String firstName,
+        String lastName,
+        String email,
+        String address
 
-){
+) {
 
 }
