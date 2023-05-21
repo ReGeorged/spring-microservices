@@ -6,8 +6,14 @@
 
     <groupId>org.reenterprize</groupId>
     <artifactId>remicroservices</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>GiorgiBazierashvili</name>
+
+    <modules>
+        <module>customer</module>
+    </modules>
+
+    <name>GBSpringMicroservices</name>
     <url>https://www.linkedin.com/in/giorgi-bazierashvili/</url>
 
     <dependencyManagement>
@@ -51,5 +57,5 @@
         <spring.version>3.1.0</spring.version>
     </properties>
 
-    
+
 </project>
